@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>iamneo Assignments</title>
+    <title>LMS Assignments</title>
     <style>
         body {
             font-family: sans-serif;
@@ -69,9 +69,9 @@
 <body>
 
     <div class="login-container" id="loginSection">
-        <h2>iamneo Login</h2>
+        <h2>LMS Login</h2>
         <label for="username">Username:</label>
-        <input type="text" id="username" value="user_iamneo">
+        <input type="text" id="username" value="user_LMS">
         <label for="password">Password:</label>
         <input type="password" id="password" value="pass123">
         <button onclick="login()">Login</button>
@@ -79,7 +79,7 @@
     </div>
 
     <div class="content-container" id="contentSection">
-        <h2>iamneo Pending Assignments</h2>
+        <h2>LMS Pending Assignments</h2>
         <div id="assignments">
             <!-- Assignment data will be loaded here -->
         </div>
@@ -87,21 +87,21 @@
 
     <script>
         // Hardcoded credentials
-        const correctUsername = "user_iamneo";
+        const correctUsername = "user_LMS";
         const correctPassword = "pass123";
 
-        let iamneoData = null;
+        let LMSData = null;
 
         async function fetchAssignments() {
             try {
-                const response = await fetch('./iamneo.json');
+                const response = await fetch('./LMS.json');
                 if (!response.ok) {
                     throw new Error('Failed to fetch assignments');
                 }
-                iamneoData = await response.json();
+                LMSData = await response.json();
             } catch (error) {
                 console.error('Error loading assignments:', error);
-                iamneoData = null;
+                LMSData = null;
             }
         }
 
@@ -129,12 +129,12 @@
             const container = document.getElementById('assignments');
             container.innerHTML = ''; // Clear previous content
 
-            if (!iamneoData || !iamneoData.assignments) {
+            if (!LMSData || !LMSData.assignments) {
                 container.innerHTML = '<p>No assignment data found.</p>';
                 return;
             }
 
-            iamneoData.assignments.forEach(assignment => {
+            LMSData.assignments.forEach(assignment => {
                 const dueDate = new Date(assignment.due_date);
                 container.innerHTML += `
                     <div class="assignment">
