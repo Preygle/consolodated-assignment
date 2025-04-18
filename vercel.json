@@ -1,6 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  // ... rest of your configuration (e.g., rewrites) goes here
   "rewrites": [
     { "source": "/lms", "destination": "/lms/LMS_site.html" },
     { "source": "/teams", "destination": "/teams/teams_site.html" },
