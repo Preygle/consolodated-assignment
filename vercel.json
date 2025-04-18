@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  // ... rest of your configuration (e.g., rewrites) goes here
+  "rewrites": [
+    { "source": "/lms", "destination": "/lms/LMS_site.html" },
+    { "source": "/teams", "destination": "/teams/teams_site.html" },
+    { "source": "/vpropel", "destination": "/vpropel/vpropel_site.html" },
+    { "source": "/lms/:match*", "destination": "/lms/:match*" },
+    { "source": "/teams/:match*", "destination": "/teams/:match*" },
+    { "source": "/vpropel/:match*", "destination": "/vpropel/:match*" }
+  ]
+}
