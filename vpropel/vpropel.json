@@ -1,0 +1,14 @@
+{
+    "assignments": [
+        {
+            "subject": "Computer Science",
+            "due_date": "2025-05-01T09:00:00",
+            "content": "Implement a basic calculator in Python."
+        },
+        {
+            "subject": "English",
+            "due_date": "2025-05-05T23:59:59",
+            "content": "Write an essay on climate change."
+        }
+    ]
+}

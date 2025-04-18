@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>iamneo Assignments</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        .login-container,
+        .content-container {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .login-container {
+            text-align: center;
+        }
+
+        .content-container {
+            display: none;
+        }
+
+        /* Hidden by default */
+        label,
+        input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .assignment {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .assignment:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container" id="loginSection">
+        <h2>iamneo Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" value="user_iamneo">
+        <label for="password">Password:</label>
+        <input type="password" id="password" value="pass123">
+        <button onclick="login()">Login</button>
+        <p id="loginError" class="error"></p>
+    </div>
+
+    <div class="content-container" id="contentSection">
+        <h2>iamneo Pending Assignments</h2>
+        <div id="assignments">
+            <!-- Assignment data will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Hardcoded credentials
+        const correctUsername = "user_iamneo";
+        const correctPassword = "pass123";
+
+        let iamneoData = null;
+
+        async function fetchAssignments() {
+            try {
+                const response = await fetch('./iamneo.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch assignments');
+                }
+                iamneoData = await response.json();
+            } catch (error) {
+                console.error('Error loading assignments:', error);
+                iamneoData = null;
+            }
+        }
+
+        function login() {
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+            const loginError = document.getElementById('loginError');
+            const loginSection = document.getElementById('loginSection');
+            const contentSection = document.getElementById('contentSection');
+
+            if (usernameInput === correctUsername && passwordInput === correctPassword) {
+                loginError.textContent = '';
+                loginSection.style.display = 'none';
+                contentSection.style.display = 'block';
+                fetchAssignments().then(() => {
+                    displayAssignments();
+                });
+            } else {
+                loginError.textContent = 'Invalid credentials. Please try again.';
+                contentSection.style.display = 'none'; // Ensure content is hidden on failed login
+            }
+        }
+
+        function displayAssignments() {
+            const container = document.getElementById('assignments');
+            container.innerHTML = ''; // Clear previous content
+
+            if (!iamneoData || !iamneoData.assignments) {
+                container.innerHTML = '<p>No assignment data found.</p>';
+                return;
+            }
+
+            iamneoData.assignments.forEach(assignment => {
+                const dueDate = new Date(assignment.due_date);
+                container.innerHTML += `
+                    <div class="assignment">
+                        <h3>${assignment.subject}</h3>
+                        <p>${assignment.content}</p>
+                        <p>Due Date: ${dueDate.toLocaleString()}</p>
+                    </div>
+                `;
+            });
+        }
+
+        // Optional: Check if already "logged in" (e.g., using sessionStorage)
+        // For simplicity, this example requires login every time.
+    </script>
+
+</body>
+
+</html>
