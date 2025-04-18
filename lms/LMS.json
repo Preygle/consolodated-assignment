@@ -1,14 +1,14 @@
 {
     "assignments": [
         {
-            "subject": "Biology",
-            "due_date": "2025-04-19T10:00:00",
-            "content": "Describe the process of photosynthesis."
+            "subject": "Probability and Statistics",
+            "due_date": "2025-04-20T14:00:00",
+            "content": "Solve problems based on Bayes' Theorem and Probability Distributions."
         },
         {
-            "subject": "Chemistry",
-            "due_date": "2025-06-15T12:30:00",
-            "content": "Prepare notes on chemical bonding."
+            "subject": "Design and Analysis of Algorithms",
+            "due_date": "2025-04-23T11:45:00",
+            "content": "Write a report on Divide and Conquer strategy with examples."
         }
     ]
 }

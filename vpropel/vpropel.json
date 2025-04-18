@@ -1,14 +1,14 @@
 {
     "assignments": [
         {
-            "subject": "Computer Science",
-            "due_date": "2025-05-01T09:00:00",
-            "content": "Implement a basic calculator in Python."
+            "subject": "Java",
+            "due_date": "2025-04-19T20:00:00",
+            "content": "Create a Java program to demonstrate multithreading with synchronization."
         },
         {
-            "subject": "English",
-            "due_date": "2025-05-05T23:59:59",
-            "content": "Write an essay on climate change."
+            "subject": "DSA",
+            "due_date": "2025-04-25T10:30:00",
+            "content": "Implement and analyze the time complexity of Merge Sort and Quick Sort algorithms."
         }
     ]
 }
