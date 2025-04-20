@@ -26,7 +26,6 @@
             display: none;
         }
 
-        /* Hidden by default */
         label,
         input {
             display: block;
@@ -81,12 +80,10 @@
     <div class="content-container" id="contentSection">
         <h2>Teams Pending Assignments</h2>
         <div id="assignments">
-            <!-- Assignment data will be loaded here -->
         </div>
     </div>
 
     <script>
-        // Hardcoded credentials
         const correctUsername = "user_teams";
         const correctPassword = "pass456";
 
@@ -121,13 +118,13 @@
                 });
             } else {
                 loginError.textContent = 'Invalid credentials. Please try again.';
-                contentSection.style.display = 'none'; // Ensure content is hidden on failed login
+                contentSection.style.display = 'none'; 
             }
         }
 
         function displayAssignments() {
             const container = document.getElementById('assignments');
-            container.innerHTML = ''; // Clear previous content
+            container.innerHTML = ''; 
 
             if (!teamsData || !teamsData.assignments) {
                 container.innerHTML = '<p>No assignment data found.</p>';
